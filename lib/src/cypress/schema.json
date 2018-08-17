@@ -1,0 +1,25 @@
+{
+  "title": "Cypress Target",
+  "description": "Cypress target options for Build Facade.",
+  "type": "object",
+  "properties": {
+    "devServerTarget": {
+      "type": "string",
+      "description": "Dev server target to run tests against."
+    },
+    "baseUrl": {
+      "type": "string",
+      "description": "Base URL for Cypress to connect to."
+    },
+    "port": {
+      "type": "number",
+      "description": "The port to use to serve the application."
+    },
+    "host": {
+      "type": "string",
+      "description": "Host to listen on.",
+      "default": "localhost"
+    }
+  },
+  "additionalProperties": false
+}
