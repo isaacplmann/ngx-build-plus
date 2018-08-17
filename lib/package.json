@@ -1,6 +1,6 @@
 {
   "name": "ngx-cypress-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extensible Builder for the Angular CLI suitable not only for Angular Elements.",
   "license": "MIT",
   "repository": {
@@ -13,7 +13,7 @@
   "scripts": {
     "tsc": "tsc",
     "copy:sample": "cpr . ../sample/node_modules/ngx-cypress-builder -d -f node_modules",
-    "copy:readme": "cpr ../readme.md ./readme.md -o && cpr ../result.png ./result.png -o",
+    "copy:readme": "cpr ../readme.md ./readme.md -o",
     "build": "npm run tsc && npm run copy:sample && npm run copy:readme"
   },
   "dependencies": {
