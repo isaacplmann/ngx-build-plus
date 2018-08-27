@@ -19,6 +19,14 @@
       "type": "string",
       "description": "Host to listen on.",
       "default": "localhost"
+    },
+    "reporterPath": {
+      "type": "string",
+      "description": "Relative path to the reporter based the project root"
+    },
+    "env": {
+      "type": "object",
+      "description": "Environment variable"
     }
   },
   "additionalProperties": false
