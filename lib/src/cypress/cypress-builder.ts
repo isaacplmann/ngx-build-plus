@@ -12,8 +12,8 @@ import {
   BuilderDescription,
   BuildEvent
 } from "@angular-devkit/architect";
-import { Observable, of, from } from "rxjs";
-import { concatMap, take, tap } from "rxjs/operators";
+import { from, Observable, of } from "rxjs";
+import { concatMap, map, take, tap } from "rxjs/operators";
 import * as url from "url";
 
 export enum CypressRunningMode {
@@ -123,7 +123,9 @@ export class CypressBuilder implements Builder<CypressBuilderOptions> {
     const cypress = require("cypress");
     const runner =
       options.mode === CypressRunningMode.Console
-        ? cypress.run(additionalCypressConfig)
+        ? cypress
+            .run(additionalCypressConfig)
+            .pipe(map((result: any) => ({ success: result.totalFailed === 0 })))
         : cypress.open(additionalCypressConfig);
 
     return from(runner);
