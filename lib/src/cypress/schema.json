@@ -19,6 +19,23 @@
       "type": "string",
       "description": "Host to listen on.",
       "default": "localhost"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "console",
+        "browser"
+      ],
+      "description": "Run mode of Cypress. Valid value are 'console' and 'browser' ",
+      "default": "console"
+    },
+    "reporterPath": {
+      "type": "string",
+      "description": "Relative path to the reporter based the project root"
+    },
+    "env": {
+      "type": "object",
+      "description": "Environment variable"
     }
   },
   "additionalProperties": false
