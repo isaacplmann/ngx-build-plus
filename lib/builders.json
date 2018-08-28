@@ -1,14 +1,9 @@
 {
   "builders": {
-    "cypress-open": {
-      "class": "./src/cypress/cypress-open-builder",
+    "cypress": {
+      "class": "./src/cypress/cypress-builder",
       "schema": "./src/cypress/schema.json",
-      "description": "Open Cypress e2e Test Runner"
-    },
-    "cypress-run": {
-      "class": "./src/cypress/cypress-run-builder",
-      "schema": "./src/cypress/schema.json",
-      "description": "Run Cypress e2e Test Runner"
+      "description": " Cypress e2e Test Runner"
     }
   }
 }
