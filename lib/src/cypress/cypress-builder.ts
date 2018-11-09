@@ -123,8 +123,7 @@ export class CypressBuilder implements Builder<CypressBuilderOptions> {
     const cypress = require("cypress");
     const runner =
       options.mode === CypressRunningMode.Console
-        ? cypress
-            .run(additionalCypressConfig)
+        ? from(cypress.run(additionalCypressConfig))
             .pipe(map((result: any) => ({ success: result.totalFailed === 0 })))
         : cypress.open(additionalCypressConfig);
 
