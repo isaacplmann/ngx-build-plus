@@ -30,6 +30,12 @@ export interface CypressBuilderOptions {
   env?: object;
   host?: string;
   port?: number;
+  ciBuildId?: string;
+  group?: string;
+  key?: string;
+  parallel?: boolean;
+  record?: boolean;
+  spec?: string;
 }
 
 export class CypressBuilder implements Builder<CypressBuilderOptions> {
@@ -118,7 +124,13 @@ export class CypressBuilder implements Builder<CypressBuilderOptions> {
       },
       ...(options.project ? { project: options.project } : {}),
       ...(options.reporterPath ? { reporter: options.reporterPath } : {}),
-      ...(options.env ? { env: options.env } : {})
+      ...(options.env ? { env: options.env } : {}),
+      ...(options.ciBuildId ? { ciBuildId: options.ciBuildId } : {}),
+      ...(options.group ? { group: options.group } : {}),
+      ...(options.key ? { key: options.key } : {}),
+      ...(options.parallel ? { parallel: options.parallel } : {}),
+      ...(options.record ? { record: options.record } : {}),
+      ...(options.spec ? { spec: options.spec } : {}),
     };
     const cypress = require("cypress");
     const runner =
