@@ -23,18 +23,19 @@ export enum CypressRunningMode {
 
 export interface CypressBuilderOptions {
   devServerTarget?: string;
-  project?: string;
   mode?: string;
-  reporterPath?: string;
   baseUrl?: string;
-  env?: object;
   host?: string;
-  port?: number;
   ciBuildId?: string;
+  env?: object;
   group?: string;
   key?: string;
   parallel?: boolean;
+  port?: number;
+  project?: string;
   record?: boolean;
+  reporter?: string;
+  reporterPath?: string;
   spec?: string;
 }
 
@@ -122,15 +123,16 @@ export class CypressBuilder implements Builder<CypressBuilderOptions> {
       config: {
         baseUrl: options.baseUrl
       },
-      ...(options.project ? { project: options.project } : {}),
-      ...(options.reporterPath ? { reporter: options.reporterPath } : {}),
-      ...(options.env ? { env: options.env } : {}),
       ...(options.ciBuildId ? { ciBuildId: options.ciBuildId } : {}),
+      ...(options.env ? { env: options.env } : {}),
       ...(options.group ? { group: options.group } : {}),
       ...(options.key ? { key: options.key } : {}),
       ...(options.parallel ? { parallel: options.parallel } : {}),
+      ...(options.project ? { project: options.project } : {}),
       ...(options.record ? { record: options.record } : {}),
-      ...(options.spec ? { spec: options.spec } : {}),
+      ...(options.reporter ? { reporter: options.reporter } : {}),
+      ...(options.reporterPath ? { reporter: options.reporterPath } : {}),
+      ...(options.spec ? { spec: options.spec } : {})
     };
     const cypress = require("cypress");
     const runner =
