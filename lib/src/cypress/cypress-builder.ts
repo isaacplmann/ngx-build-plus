@@ -68,8 +68,9 @@ export class CypressBuilder implements Builder<CypressBuilderOptions> {
       targetName,
       configuration
     ] = (options.devServerTarget as string).split(":");
-    // Override browser build watch setting.
-    const overrides = { watch: false, host: options.host, port: options.port };
+    // use browser build watch setting based on cypress running mode
+    const watchMode = options.mode === CypressRunningMode.Browser;
+    const overrides = { watch: watchMode, host: options.host, port: options.port };
     const targetSpec = {
       project,
       target: targetName,
